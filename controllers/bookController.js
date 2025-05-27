@@ -211,9 +211,12 @@ exports.makepaymentController = async(req, res) => {
             //make payment
             mode: "payment",
             //if the payment is successfull - the url to be shown
-            success_url: 'http://localhost:5173/payment-success',
+            //success_url: 'http://localhost:5173/payment-success',
+            success_url: 'https://bookstore-frontend-dec24.vercel.app/payment-success',
+            
             //if the payment is failed - the url to be shown
-            cancel_url: 'http://localhost:5173/payment-error'
+            //cancel_url: 'http://localhost:5173/payment-error'
+            cancel_url: 'https://bookstore-frontend-dec24.vercel.app/payment-error'
         });
 
         console.log(session);
