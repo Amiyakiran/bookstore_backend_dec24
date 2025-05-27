@@ -1,6 +1,6 @@
 const books = require("../model/bookModel");
 const Stripe = require('stripe')
-const stripe = Stripe('sk_test_51RPc3kFV25RbWaaJTJqFuGbLFn0M8ozoj9HtjQz0PIyTZFwcfcgNKK5XE9HduJVgeVhyp8zRxYEV2vNemPzxveOj00nBxnSvXf')
+
 
 //to add books 
 exports.addBookController = async (req, res) => {
