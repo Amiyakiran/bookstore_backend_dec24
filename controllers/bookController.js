@@ -1,5 +1,5 @@
 const books = require("../model/bookModel");
-const stripe = require('stripe')
+const stripe = require('stripe')(process.env.stripekey)
 
 
 //to add books 
