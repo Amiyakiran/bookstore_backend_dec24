@@ -1,5 +1,5 @@
 const books = require("../model/bookModel");
-const stripe = require('stripe')('sk_test_51RSxysI2ZsleBLUMnEeuYXM4YSy3APcMwYgQj9HQxX8MYl6FPAF1WuJNOmAw2fSzR1nuQg4Yn7cmBErGRYQz6Cf300lvCPtcre')
+const stripe = require('stripe')('sk_test_51RPc3kFV25RbWaaJTJqFuGbLFn0M8ozoj9HtjQz0PIyTZFwcfcgNKK5XE9HduJVgeVhyp8zRxYEV2vNemPzxveOj00nBxnSvXf')
 
 //to add books
 exports.addBookController = async (req, res) => {
@@ -9,9 +9,9 @@ exports.addBookController = async (req, res) => {
     // console.log(req.body);
     // console.log(req.files); 
 
-    const { title, author, noofpages, imageurl, price, dprice, abstarct, publisher, language, isbn, category } = req.body
+    const { title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category } = req.body
 
-    console.log(title, author, noofpages, imageurl, price, dprice, abstarct, publisher, language, isbn, category)
+    console.log(title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category)
 
     uploadedImg = []
     req.files.map((item) => uploadedImg.push(item.filename))
@@ -29,7 +29,7 @@ exports.addBookController = async (req, res) => {
         }
         else {
             const newBook = new books({
-                title, author, noofpages, imageurl, price, dprice, abstarct, publisher, language, isbn, category, uploadedImg, userMail: email
+                title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImg, userMail: email
             })
             await newBook.save()
             res.status(200).json(newBook)
@@ -160,7 +160,7 @@ exports.makepaymentController = async(req, res) => {
             imageurl: booksDetails.imageurl,
             price: booksDetails.price,
             dprice: booksDetails.dprice,
-            abstarct: booksDetails.abstarct,
+            abstract: booksDetails.abstract,
             publisher: booksDetails.publisher,
             language: booksDetails.language,
             isbn: booksDetails.isbn,
@@ -187,7 +187,7 @@ exports.makepaymentController = async(req, res) => {
                         imageurl: booksDetails.imageurl,
                         price: `${booksDetails.price}`,
                         dprice: `${booksDetails.dprice}`,
-                        abstarct: booksDetails.abstarct.slice(0,20),
+                        abstract: booksDetails.abstract.slice(0,20),
                         publisher: booksDetails.publisher,
                         language: booksDetails.language,
                         isbn: booksDetails.isbn,
@@ -206,7 +206,7 @@ exports.makepaymentController = async(req, res) => {
         const session = await stripe.checkout.sessions.create({
             //purchased using cards
             payment_method_types: ["card"],
-            //details og products that is purchasing
+            //details of products that is purchasing
             line_items: line_item,
             //make payment
             mode: "payment",
