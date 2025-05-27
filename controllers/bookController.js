@@ -1,5 +1,5 @@
 const books = require("../model/bookModel");
-const stripe = require('stripe')('sk_test_51RPc3kFV25RbWaaJTJqFuGbLFn0M8ozoj9HtjQz0PIyTZFwcfcgNKK5XE9HduJVgeVhyp8zRxYEV2vNemPzxveOj00nBxnSvXf')
+const stripe = require('stripe')
 
 
 //to add books 
